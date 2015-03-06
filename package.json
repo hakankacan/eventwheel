@@ -1,0 +1,21 @@
+{
+  "name": "eventwheel",
+  "description": "Mouse wheel event shim",
+  "version": "0.1.0",
+  "keywords": [
+    "mouse",
+    "wheel",
+    "scroll",
+    "event"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andrepolischuk/eventwheel.git"
+  },
+  "dependencies": {
+    "component-event": "^0.1.4"
+  },
+  "main": "index.js",
+  "author": "Andrey Polischuk <andre.polischuk@gmail.com>",
+  "license": "MIT"
+}
