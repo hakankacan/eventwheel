@@ -15,7 +15,7 @@ try {
  * Wheel events
  */
 
-var wheelEvents = [
+var wheelEventsMap = [
   'wheel',
   'mousewheel',
   'scroll',
@@ -23,7 +23,20 @@ var wheelEvents = [
 ];
 
 /**
- * Expose eventwheel
+ * Wheel event name
+ */
+
+var wheelEvent;
+
+for (var e = 0; e < wheelEventsMap.length; e++) {
+  if ('on' + wheelEventsMap[e] in window) {
+    wheelEvent = wheelEventsMap[e];
+    break;
+  }
+}
+
+/**
+ * Expose bind
  * @param  {Element} element
  * @param  {Function} fn
  * @param  {Boolean} capture
@@ -31,10 +44,19 @@ var wheelEvents = [
  * @api public
  */
 
-module.exports = function(element, fn, capture) {
-  for (var e = 0; e < wheelEvents.length; e++) {
-    if ('on' + wheelEvents[e] in window) {
-      return events.bind(element, wheelEvents[e], fn, capture || false);
-    }
-  }
+module.exports = module.exports.bind = function(element, fn, capture) {
+  return events.bind(element, wheelEvent, fn, capture || false);
+};
+
+/**
+ * Expose unbind
+ * @param  {Element} element
+ * @param  {Function} fn
+ * @param  {Boolean} capture
+ * @return {Function}
+ * @api public
+ */
+
+module.exports.unbind = function(element, fn, capture) {
+  return events.unbind(element, wheelEvent, fn, capture || false);
 };
