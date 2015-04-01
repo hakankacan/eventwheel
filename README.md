@@ -7,7 +7,7 @@
   Browser:
 
 ```html
-<script src="https://cdn.rawgit.com/andrepolischuk/eventwheel/0.1.0/eventwheel.min.js"></script>
+<script src="https://cdn.rawgit.com/andrepolischuk/eventwheel/0.2.0/eventwheel.min.js"></script>
 ```
 
   Component(1):
@@ -24,15 +24,23 @@ $ npm install eventwheel
 
 ## API
 
-### eventwheel(element, fn)
+### eventwheel.bind(element, fn[, capture])
 
-  Set mouse wheel event handler
+  Bind event `mousewheel` handler
 
 ```js
-eventwheel(element, function(e) {
+eventwheel.bind(element, function(e) {
 
 });
 ```
+
+### eventwheel(element, fn[, capture])
+
+  `eventwheel.bind` alias
+
+### eventwheel.unbind(element, fn[, capture])
+
+  Unbind event `mousewheel` handler
 
 ## License
 

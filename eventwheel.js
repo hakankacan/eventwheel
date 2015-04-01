@@ -38,15 +38,18 @@
    */
 
   function call(id, require){
-    var m = cache[id] = { exports: {} };
+    var m = { exports: {} };
     var mod = modules[id];
     var name = mod[2];
     var fn = mod[0];
 
     fn.call(m.exports, function(req){
       var dep = modules[id][1][req];
-      return require(dep ? dep : req);
+      return require(dep || req);
     }, m, m.exports, outer, modules, cache, entries);
+
+    // store to cache after successful resolve
+    cache[id] = m;
 
     // expose as `name`.
     if (name) cache[name] = cache[id];
@@ -108,7 +111,7 @@ try {
  * Wheel events
  */
 
-var wheelEvents = [
+var wheelEventsMap = [
   'wheel',
   'mousewheel',
   'scroll',
@@ -116,7 +119,20 @@ var wheelEvents = [
 ];
 
 /**
- * Expose eventwheel
+ * Wheel event name
+ */
+
+var wheelEvent;
+
+for (var e = 0; e < wheelEventsMap.length; e++) {
+  if ('on' + wheelEventsMap[e] in window) {
+    wheelEvent = wheelEventsMap[e];
+    break;
+  }
+}
+
+/**
+ * Expose bind
  * @param  {Element} element
  * @param  {Function} fn
  * @param  {Boolean} capture
@@ -124,12 +140,21 @@ var wheelEvents = [
  * @api public
  */
 
-module.exports = function(element, fn, capture) {
-  for (var e = 0; e < wheelEvents.length; e++) {
-    if ('on' + wheelEvents[e] in window) {
-      return events.bind(element, wheelEvents[e], fn, capture || false);
-    }
-  }
+module.exports = module.exports.bind = function(element, fn, capture) {
+  return events.bind(element, wheelEvent, fn, capture || false);
+};
+
+/**
+ * Expose unbind
+ * @param  {Element} element
+ * @param  {Function} fn
+ * @param  {Boolean} capture
+ * @return {Function}
+ * @api public
+ */
+
+module.exports.unbind = function(element, fn, capture) {
+  return events.unbind(element, wheelEvent, fn, capture || false);
 };
 
 }, {"event":2,"component-event":2}],
@@ -169,5 +194,4 @@ exports.unbind = function(el, type, fn, capture){
   el[unbind](prefix + type, fn, capture || false);
   return fn;
 };
-}, {}]}, {}, {"1":""})
-);
+}, {}]}, {}, {"1":""}));
