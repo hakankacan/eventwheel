@@ -133,6 +133,12 @@ for (var e = 0; e < wheelEventsMap.length; e++) {
 
 /**
  * Expose bind
+ */
+
+module.exports = bind.bind = bind;
+
+/**
+ * Bind
  * @param  {Element} element
  * @param  {Function} fn
  * @param  {Boolean} capture
@@ -140,9 +146,10 @@ for (var e = 0; e < wheelEventsMap.length; e++) {
  * @api public
  */
 
-module.exports = module.exports.bind = function(element, fn, capture) {
+
+function bind(element, fn, capture) {
   return events.bind(element, wheelEvent, fn, capture || false);
-};
+}
 
 /**
  * Expose unbind

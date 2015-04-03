@@ -4,10 +4,10 @@
 
 ## Instalation
 
-  Browser:
+  UMD:
 
 ```html
-<script src="https://cdn.rawgit.com/andrepolischuk/eventwheel/0.2.0/eventwheel.min.js"></script>
+<script src="https://cdn.rawgit.com/andrepolischuk/eventwheel/0.2.1/eventwheel.min.js"></script>
 ```
 
   Component(1):
