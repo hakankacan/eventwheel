@@ -12,6 +12,8 @@ function handler() {}
 describe('eventwheel', function() {
   it('should return function', function() {
     assert(typeof eventwheel === 'function');
+    assert(typeof eventwheel.bind === 'function');
+    assert(typeof eventwheel.unbind === 'function');
   });
 });
 
