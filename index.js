@@ -26,12 +26,14 @@ var wheelEventsMap = [
  * Wheel event name
  */
 
-var wheelEvent;
+var wheelEvent = 'mousewheel';
 
-for (var e = 0; e < wheelEventsMap.length; e++) {
-  if ('on' + wheelEventsMap[e] in window) {
-    wheelEvent = wheelEventsMap[e];
-    break;
+if (window.addEventListener) {
+  for (var e = 0; e < wheelEventsMap.length; e++) {
+    if ('on' + wheelEventsMap[e] in window) {
+      wheelEvent = wheelEventsMap[e];
+      break;
+    }
   }
 }
 
