@@ -8,10 +8,7 @@
     "scroll",
     "event"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/andrepolischuk/eventwheel.git"
-  },
+  "repository": "andrepolischuk/eventwheel",
   "dependencies": {
     "component-event": "^0.1.4"
   },

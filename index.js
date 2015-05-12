@@ -45,6 +45,7 @@ module.exports = bind.bind = bind;
 
 /**
  * Bind
+ *
  * @param  {Element} element
  * @param  {Function} fn
  * @param  {Boolean} capture
@@ -59,6 +60,7 @@ function bind(element, fn, capture) {
 
 /**
  * Expose unbind
+ *
  * @param  {Element} element
  * @param  {Function} fn
  * @param  {Boolean} capture
