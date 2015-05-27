@@ -6,6 +6,9 @@
 
 ```sh
 $ npm install --save eventwheel
+```
+
+```sh
 $ component install andrepolischuk/eventwheel
 ```
 
