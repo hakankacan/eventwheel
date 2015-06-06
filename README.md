@@ -2,14 +2,14 @@
 
   > Mouse wheel event shim
 
-## Instalation
+## Install
 
 ```sh
-$ npm install --save eventwheel
+npm install --save eventwheel
 ```
 
 ```sh
-$ component install andrepolischuk/eventwheel
+component install andrepolischuk/eventwheel
 ```
 
 ## API
