@@ -6,7 +6,7 @@
  */
 
 try {
-  var events = require('event');
+  var events = require('events');
 } catch (err) {
   var events = require('component-event');
 }
